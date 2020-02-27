@@ -33,7 +33,7 @@ public class Checker
     {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
-        File javaFile = new File("./app/target/universal/stage/Test.java");
+        File javaFile = new File("../app/target/universal/stage/Test.java");
         PrintWriter pw = new PrintWriter(javaFile);
         pw.print(pInputText);
         pw.close();
