@@ -52,7 +52,7 @@ public class Checker
         String response = "";
         for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics())
         {
-            response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            response += "INPUT: " + pInputText + " ----->" + diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
         }
 
         javaFile.delete();
