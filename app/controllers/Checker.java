@@ -32,11 +32,13 @@ public class Checker
     public static String checkCode(String pInputText) throws Exception
     {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-
-        File javaFile = new File("../app/target/universal/stage/Test.java");
+        long x = System.currentTimeMillis();
+        File javaFile = new File("../app/target/universal/stage/Test"+x+".java");
         //File javaFile = new File("./Test.java");
         PrintWriter pw = new PrintWriter(javaFile);
-        pw.print(pInputText);
+        pw.println("public class Test"+x+"{");
+        pw.println(pInputText);
+        pw.println("}");
         pw.close();
 
         String fileName = javaFile.getName();
