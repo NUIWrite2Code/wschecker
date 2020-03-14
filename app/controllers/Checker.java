@@ -56,7 +56,7 @@ public class Checker
         {
 
             //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
-            response += "Source: "+diagnostic.getSource()+" \tLine [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            response += "Source: "+diagnostic.getCode()+" \tLine [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
         }
 
         javaFile.delete();
