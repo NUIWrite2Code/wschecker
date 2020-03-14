@@ -51,11 +51,12 @@ public class Checker
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
         compiler.getTask(null, fileManager, diagnostics, null, null, compilationUnits).call();
 
-        String response = "";
+        String response = "Please address the following errors:\n\n";
         for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics())
         {
 
-            response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            response += "Source: "+diagnostic.getSource()+" \tLine [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
         }
 
         javaFile.delete();
