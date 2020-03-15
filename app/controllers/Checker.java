@@ -56,7 +56,7 @@ public class Checker
         {
 
             //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
-            int myLine = Integer.parseInt(diagnostic.getLineNumber()) - 1;
+            long myLine = diagnostic.getLineNumber() - 1;
             response += "Line [" + myLine + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
         }
 
