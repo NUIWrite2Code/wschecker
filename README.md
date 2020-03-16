@@ -1,7 +1,7 @@
 # Code Checker
 **_wschecker_** is the checker component of our [Write2Code](https://github.com/NUIWrite2Code) App.  
 It provides the service of:  
-* Compiling the JAVA code received from the client side
+* Compiling the JAVA code received from the client side.
 * Responding with the compilation result showing whether the code is correct or not.
 # Requirements
 The checker component was built using the following technologies:
