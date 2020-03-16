@@ -51,6 +51,7 @@ public class Checker
         DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
         compiler.getTask(null, fileManager, diagnostics, null, null, compilationUnits).call();
 
+        int count = 0;
         String response = "Please address the following errors:\n\n";
         for (Diagnostic<?> diagnostic : diagnostics.getDiagnostics())
         {
@@ -58,9 +59,15 @@ public class Checker
             //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
             long myLine = diagnostic.getLineNumber() - 1;
             response += "Line [" + Long.toString(myLine) + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            count++;
         }
 
         javaFile.delete();
+
+        if(count == 0)
+        {
+            response = "Great job! You have no compilation errors!";
+        }
 
         return response;
     }
