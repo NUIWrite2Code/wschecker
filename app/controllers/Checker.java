@@ -49,8 +49,7 @@ public class Checker
         /*
          * We read the file as a Text file, to get lines of text to display to the
          */
-        File f = new File(fileName);
-        FileReader fr = new FileReader(f);
+        FileReader fr = new FileReader(javaFile);
         BufferedReader buf = new BufferedReader(fr);
         ArrayList<String> lines = new ArrayList<String>();
         
