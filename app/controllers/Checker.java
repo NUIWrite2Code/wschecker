@@ -79,6 +79,10 @@ public class Checker
             //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
             //long myLine = diagnostic.getLineNumber() - 1;
             //response += "Line [" + Long.toString(myLine) + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            
+            /* 
+             * Here we include the tracking on the line of codes input by the user
+             */
             long l = diagnostic.getLineNumber() -1;
             int index = (int) l;
             response = diagnostic.getKind() + " in line: " +lines.get(index).trim() +" ---> "+ diagnostic.getMessage(Locale.ROOT) + "\n";
