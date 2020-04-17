@@ -2,10 +2,12 @@ package controllers;
 import javax.tools.*;
 import java.io.File;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.Locale;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ public class Checker
      */
     public static String checkCode(String pInputText) throws Exception
     {
+
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         long x = System.currentTimeMillis();
         File javaFile = new File("../app/target/universal/stage/Test"+x+".java");
@@ -42,6 +45,23 @@ public class Checker
         pw.close();
 
         String fileName = javaFile.getName();
+
+        /*
+         * We read the file as a Text file, to get lines of text to display to the
+         */
+        File f = new File(fileName);
+        FileReader fr = new FileReader(f);
+        BufferedReader buf = new BufferedReader(fr);
+        ArrayList<String> lines = new ArrayList<String>();
+        
+        String line = buf.readLine();
+        
+        while(line != null)
+        {
+            lines.add(line);
+            line = buf.readLine();
+        }
+        buf.close();
 
 
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
@@ -57,8 +77,11 @@ public class Checker
         {
 
             //response += diagnostic.getKind() + ":\t Line [" + diagnostic.getLineNumber() + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
-            long myLine = diagnostic.getLineNumber() - 1;
-            response += "Line [" + Long.toString(myLine) + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            //long myLine = diagnostic.getLineNumber() - 1;
+            //response += "Line [" + Long.toString(myLine) + "] \t Position [" + diagnostic.getPosition() + "]\t" + diagnostic.getMessage(Locale.ROOT) + "\n";
+            long l = diagnostic.getLineNumber() -1;
+            int index = (int) l;
+            response = diagnostic.getKind() + " in line: " +lines.get(index).trim() +" ---> "+ diagnostic.getMessage(Locale.ROOT) + "\n";
             count++;
         }
 
