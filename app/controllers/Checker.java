@@ -84,7 +84,7 @@ public class Checker
              */
             long l = diagnostic.getLineNumber() -1;
             int index = (int) l;
-            response = "<b>Check: " + lines.get(index).trim() +"</b> "+ diagnostic.getMessage(Locale.ROOT) + "\n";
+            response = lines.get(index).trim() +":"+ diagnostic.getMessage(Locale.ROOT) + "\n";
             count++;
         }
 
