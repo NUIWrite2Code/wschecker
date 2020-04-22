@@ -33,7 +33,7 @@ public class Checker
      */
     public static String checkCode(String pInputText) throws Exception
     {
-        pInputText = pInputText.replace("<br/>");
+        pInputText = pInputText.replace("<br/>","\n");
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         long x = System.currentTimeMillis();
         File javaFile = new File("../app/target/universal/stage/Test"+x+".java");
